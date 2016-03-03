@@ -10,7 +10,7 @@ module Ecm::Rbac
     }
 
     # associations
-    has_many :user_roles, class_name:  'Ecm::Rbac::UserRole'
+    has_many :user_roles, class_name:  'Ecm::Rbac::UserRole', inverse_of: :role
     has_many :users, through: :user_roles # , class_name: Ecm::Rbac::Configuration.user_class
 
     has_many :role_permissions, class_name: 'Ecm::Rbac::RolePermission'

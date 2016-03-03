@@ -6,7 +6,7 @@ module Model
 
         included do
           # associations
-          has_many :user_roles, class_name: 'Ecm::Rbac::UserRole'
+          has_many :user_roles, class_name: 'Ecm::Rbac::UserRole', inverse_of: :user
           has_many :roles, class_name: 'Ecm::Rbac::Role', through: :user_roles
           has_many :role_permissions, class_name: 'Ecm::Rbac::RolePermission', through: :roles
           has_many :permissions, through: :role_permissions, class_name: 'Ecm::Rbac::Permission'
