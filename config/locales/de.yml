@@ -24,3 +24,5 @@ de:
       ecm/rbac/role:
         one: Rolle
         other: Rollen
+  classes:
+    ecm/rbac/import_default_permissions_service: Dienst zum Einrichten von Berechtigungen
