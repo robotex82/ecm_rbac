@@ -6,7 +6,7 @@ module Model
 
         included do
           # associations
-          has_many :user_roles, class_name: 'Ecm::Rbac::UserRole', inverse_of: :user
+          has_many :user_roles, class_name: 'Ecm::Rbac::UserRole', inverse_of: :user, dependent: :destroy
           has_many :roles, class_name: 'Ecm::Rbac::Role', through: :user_roles
           has_many :role_permissions, class_name: 'Ecm::Rbac::RolePermission', through: :roles
           has_many :permissions, through: :role_permissions, class_name: 'Ecm::Rbac::Permission'
@@ -19,6 +19,22 @@ module Model
 
         def allowed_to?(permission_name)
           enabled_permissions.map(&:identifier).map(&:to_sym).include?(permission_name.to_sym)
+        end
+
+        def roles_count
+          roles.count
+        end
+
+        def enabled_roles_count
+          enabled_roles.count
+        end
+
+        def permissions_count
+          permissions.count
+        end
+
+        def enabled_permissions_count
+          enabled_permissions.count
         end
       end
     end

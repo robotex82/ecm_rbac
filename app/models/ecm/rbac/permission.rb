@@ -10,7 +10,7 @@ module Ecm::Rbac
     }
 
     # associations
-    has_many :role_permissions, class_name: 'Ecm::Rbac::RolePermission'
+    has_many :role_permissions, class_name: 'Ecm::Rbac::RolePermission', dependent: :destroy
     has_many :roles, class_name: 'Ecm::Rbac::Role', through: :role_permissions
     has_many :user_roles, through: :roles, class_name: 'Ecm::Rbac::UserRole'
     has_many :users, through: :user_roles, class_name: Ecm::Rbac::Configuration.user_class
