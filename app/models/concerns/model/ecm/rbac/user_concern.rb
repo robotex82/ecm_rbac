@@ -17,8 +17,21 @@ module Model
           has_many :enabled_permissions, through: :enabled_role_permissions, class_name: 'Ecm::Rbac::Permission', source: :permission
         end
 
-        def allowed_to?(permission_name)
-          enabled_permissions.map(&:identifier).map(&:to_sym).include?(permission_name.to_sym)
+        def allowed_to?(permission_identifier)
+          enabled_permissions.map(&:identifier).map(&:to_sym).include?(permission_identifier.to_sym)
+        end
+
+        def has_role?(role_identifier)
+          enabled_roles.map(&:identifier).map(&:to_sym).include?(role_identifier.to_sym)
+        end
+
+        def add_role(role_identifier)
+          role = Role.where(identifier: role_identifier).first
+          if role
+            << role
+          else
+            false
+          end
         end
 
         def roles_count
