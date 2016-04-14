@@ -28,7 +28,7 @@ module Model
         def add_role(role_identifier)
           role = Role.where(identifier: role_identifier).first
           if role
-            << role
+            roles << role
           else
             false
           end
