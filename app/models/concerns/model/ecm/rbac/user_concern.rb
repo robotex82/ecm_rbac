@@ -26,7 +26,7 @@ module Model
         end
 
         def add_role(role_identifier)
-          role = Role.where(identifier: role_identifier).first
+          role = Ecm::Rbac::Role.where(identifier: role_identifier).first
           if role
             roles << role
           else
