@@ -21,7 +21,7 @@ module Ecm::Rbac
       end
       say 'Input is valid', indent: 1
 
-      load_yaml
+      return response unless load_yaml
       return response unless yaml_structure_valid?
 
       load_permissions
@@ -82,8 +82,14 @@ module Ecm::Rbac
     end
 
     def load_yaml
-      @yaml = YAML.load_file(filename).with_indifferent_access
-      say "Loaded YAML from #{filename}", indent: 1
+      yaml = YAML.load_file(filename)
+      if yaml
+        say "Loaded YAML from #{filename}", indent: 1
+        @yaml = yaml.with_indifferent_access
+      else
+        say "Could not load YAML from #{filename}", indent: 1
+        @yaml = yaml
+      end
     end
 
     def yaml_structure_valid?
