@@ -10,6 +10,8 @@ module Ecm
 
       mattr_accessor(:user_class_name) { 'User' }
 
+      mattr_accessor(:default_permissions_filename) { -> { Rails.root.join('config', 'permissions', 'default.yml') }  }
+
       def self.user_class
         user_class_name.constantize
       end

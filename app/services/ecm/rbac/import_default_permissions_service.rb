@@ -36,6 +36,10 @@ module Ecm::Rbac
 
     private
 
+    def filename
+      @filename ||= Ecm::Rbac.default_permissions_filename.call
+    end
+
     def create_or_update_permissions
       permissions = @permissions.collect do |permission_identifier|
         Ecm::Rbac::Permission.where(identifier: permission_identifier).first_or_initialize.tap do |permission|
