@@ -1,4 +1,4 @@
-class CreateEcmRbacRolePermissions < ActiveRecord::Migration
+class CreateEcmRbacRolePermissions < ActiveRecord::Migration[4.2]
   def change
     create_table :ecm_rbac_role_permissions do |t|
       t.integer :role_id, index: true

@@ -1,4 +1,4 @@
-class CreateEcmRbacPermissions < ActiveRecord::Migration
+class CreateEcmRbacPermissions < ActiveRecord::Migration[4.2]
   def change
     create_table :ecm_rbac_permissions do |t|
       t.string :identifier

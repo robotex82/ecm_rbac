@@ -6,8 +6,15 @@ module Ecm
 
         source_root File.expand_path('../templates', __FILE__)
 
+        attr_reader :user_class_name
+
+        def initialize(*args)
+          super
+          @user_class_name = ENV.fetch('ECM_RBAC_USER_CLASS_NAME') { 'User' }
+        end
+
         def generate_initializer
-          copy_file 'initializer.rb', 'config/initializers/ecm_rbac.rb'
+          template 'initializer.rb', 'config/initializers/ecm_rbac.rb'
         end
       end
     end

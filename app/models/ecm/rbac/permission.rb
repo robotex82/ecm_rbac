@@ -13,12 +13,12 @@ module Ecm::Rbac
     has_many :role_permissions, class_name: 'Ecm::Rbac::RolePermission', dependent: :destroy
     has_many :roles, class_name: 'Ecm::Rbac::Role', through: :role_permissions
     has_many :user_roles, through: :roles, class_name: 'Ecm::Rbac::UserRole'
-    has_many :users, through: :user_roles, class_name: Ecm::Rbac::Configuration.user_class
+    has_many :users, through: :user_roles, class_name: Ecm::Rbac::Configuration.user_class_name
 
     has_many :enabled_roles, -> { enabled }, class_name: 'Ecm::Rbac::Role', through: :role_permissions, source: :permission
     has_many :enabled_user_roles, class_name: 'Ecm::Rbac::UserRole', through: :enabled_roles, source: :role_permissions
 
-    has_many :enabled_users, through: :enabled_user_roles, class_name: 'User', source: :user
+    has_many :enabled_users, through: :enabled_user_roles, class_name: Ecm::Rbac::Configuration.user_class_name, source: :user
 
     flag_from_time_range :enabled?
 

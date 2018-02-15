@@ -1,7 +1,7 @@
 module Ecm::Rbac
   class UserRole < ActiveRecord::Base
     # associations
-    belongs_to :user, class_name: Ecm::Rbac::Configuration.user_class, foreign_key: 'user_id', inverse_of: :user_roles
+    belongs_to :user, class_name: Ecm::Rbac::Configuration.user_class_name, foreign_key: 'user_id', inverse_of: :user_roles
     # belongs_to :enabled_user, foreign_key: 'user_id', class_name: 'User'
     belongs_to :role, inverse_of: :user_roles
 
