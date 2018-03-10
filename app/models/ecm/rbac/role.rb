@@ -6,12 +6,12 @@ module Ecm::Rbac
 
     DEFAULTS = {
       enabled_from: '01.01.1900 00:00:00',
-      enabled_to: '31.12.9999 23:59:59'
+      enabled_to:   '31.12.9999 23:59:59'
     }
 
     # associations
     has_many :user_roles, class_name:  'Ecm::Rbac::UserRole', inverse_of: :role
-    has_many :users, through: :user_roles # , class_name: Ecm::Rbac::Configuration.user_class
+    has_many :users, through: :user_roles
 
     has_many :role_permissions, class_name: 'Ecm::Rbac::RolePermission'
     has_many :permissions, class_name: 'Ecm::Rbac::Permission', through: :role_permissions
@@ -37,7 +37,7 @@ module Ecm::Rbac
     def set_defaults
       return if persisted?
       self.enabled_from = DEFAULTS[:enabled_from]
-      self.enabled_to = DEFAULTS[:enabled_to]
+      self.enabled_to   = DEFAULTS[:enabled_to]
     end
   end
 end
