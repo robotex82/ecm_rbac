@@ -1,4 +1,10 @@
 de:
+  activemodel:
+    models:
+      ecm/rbac/import_default_permissions_service: "Dienst zum Einrichten von Berechtigungen"
+    attributes:
+      ecm/rbac/import_default_permissions_service:
+        filename: Datei
   activerecord:
     attributes:
       ecm/rbac/permission:
@@ -48,7 +54,5 @@ de:
       ecm/rbac/user_role:
         one: Benutzer-Rolle
         other: Benutzer-Rollen
-  classes:
-    ecm/rbac/import_default_permissions_service: "Dienst zum Einrichten von Berechtigungen"
   routes:
     ecm_rbac_engine: rbac

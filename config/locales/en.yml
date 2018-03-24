@@ -1,4 +1,10 @@
 en:
+  activemodel:
+    models:
+      ecm/rbac/import_default_permissions_service: "Import default permissions service"
+    attributes:
+      ecm/rbac/import_default_permissions_service:
+        filename: File
   activerecord:
     attributes:
       ecm/rbac/permission:
@@ -48,7 +54,5 @@ en:
       ecm/rbac/user_role:
         one: User Role
         other: User Roles
-  classes:
-    ecm/rbac/import_default_permissions_service: "Import default permissions service"
   routes:
     ecm_rbac_engine: rbac
