@@ -8,7 +8,7 @@ Ecm::Rbac.configure do |config|
   # Set the path of your default permissions file that will be used by
   # Ecm::Rbac::ImportDefaultPermissionsService
   # 
-  # default: config.default_permissions_filename = -> { Rails.root.join('config', 'permissions', 'default.yml') }
+  # default: config.default_permissions_filename = -> { Rails.root.join('config', 'rbac.yml') }
   # 
-  config.default_permissions_filename = -> { Rails.root.join('config', 'permissions', 'default.yml') }
+  config.default_permissions_filename = -> { Rails.root.join('config', 'rbac.yml') }
 end
